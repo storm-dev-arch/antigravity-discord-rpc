@@ -1,0 +1,21 @@
+{
+  "client_id": "1558383244892700683",
+  "details": "вайбкодит конкретно",
+  "show_active_task": true,
+  "default_state": "В потоке вайбкодинга",
+  "large_image": "196b84f3d12509f4e19c5b34553a1361",
+  "large_text": "Google Antigravity IDE",
+  "small_image": "196b84f3d12509f4e19c5b34553a1361",
+  "small_text": "Vibe Coding Mode",
+  "check_interval": 3,
+  "buttons": [
+    {
+      "label": "Google Antigravity",
+      "url": "https://deepmind.google"
+    },
+    {
+      "label": "Вайбкодинг",
+      "url": "https://en.wikipedia.org/wiki/Vibe_coding"
+    }
+  ]
+}
