@@ -5,7 +5,12 @@
 </p>
 
 <p align="center">
-  <b>Production-grade Discord Rich Presence & Glassmorphism Toast Notifications for Google Antigravity IDE</b>
+  <b>Production-grade Discord Rich Presence & Glassmorphism Toast Notifications for Google Antigravity IDE</b><br>
+  <i>Продвинутый Discord Rich Presence статус и всплывающие стеклянные уведомления для Google Antigravity</i>
+</p>
+
+<p align="center">
+  <a href="#russian">🇷🇺 Читать на русском</a> • <a href="#english">🇬🇧 English Readme</a>
 </p>
 
 <p align="center">
@@ -18,63 +23,32 @@
 
 ---
 
-## ✨ Features
+<a name="russian"></a>
+## 🇷🇺 Документация на русском
 
-- **🎮 Dynamic Discord Rich Presence**:
-  - Automatically hooks into Discord IPC via `pypresence`.
-  - Reads active task titles dynamically from Antigravity's internal SQLite database (`conversation_summaries.db`).
-  - Displays custom status text (e.g. `вайбкодит конкретно`).
-  - Displays session elapsed timer with custom Google Antigravity brand logo.
-  - Automatically pauses presence when Antigravity is closed.
+### ✨ Возможности
+- **🎮 Живой статус в Discord**:
+  - Читает активные названия задач напрямую из локальной базы данных Antigravity (`conversation_summaries.db`).
+  - Отображает кастомный статус (например: `вайбкодит конкретно`).
+  - Таймер сессии и официальный логотип Google Antigravity.
+  - Автоматически очищает присутствие в Discord, если приложение закрыто.
+- **🔔 Всплывающие стеклянные уведомления**:
+  - Написаны на **PyQt6** с полупрозрачным блюром и плавной анимацией (стиль Raycast / Linear).
+  - Воспроизводят кастомный аудио-эффект при окончании ответа ассистента.
+  - Аппаратная защита от дублей уведомлений (Debounce lock).
+- **⚡ Бесшумная работа и автозапуск**:
+  - Никаких открытых окон CMD/терминалов — запуск через `pythonw.exe` и `run_silent.vbs`.
+  - Защита от повторного запуска (single-instance watchdog).
+  - Интеграция в автозагрузку Windows.
 
-- **🔔 Sleek Glassmorphism Toast Notifications**:
-  - Built with **PyQt6** (`WA_TranslucentBackground`, `FramelessWindowHint`).
-  - Dark glass design (Raycast / Linear style) with blurred borders and subtle drop shadow.
-  - Smooth 320ms cubic slide-in & fade animation.
-  - Plays the crisp Steam Deck / Steam Toast chime on completion.
-  - Triggers instantly when Antigravity completes turn generation (`RUNNING -> IDLE`).
-
-- **⚡ Stealth & Background Autorun**:
-  - Zero terminal windows (launches silently via `pythonw.exe` & VBS wrapper).
-  - Built-in single-instance lock to prevent memory leaks or socket conflicts.
-  - One-click Windows autorun integration (`HKCU\Run` and Startup folder).
-
----
-
-## 🛠️ Architecture
-
-```
-antigravity-discord-rpc/
-├── rpc_service.py        # Core daemon: process watcher, SQLite parser & Discord IPC
-├── config.json           # User configuration (Client ID, details, image assets)
-├── run_silent.vbs        # Background runner (launches pythonw silently)
-├── start.bat             # Quick launch script
-├── stop.bat / stop.py    # Clean shutdown script
-├── requirements.txt      # Python dependencies
-└── notifier/
-    ├── toast.py          # PyQt6 frameless slide-in notification window
-    ├── chime.wav         # Authentic notification sound
-    └── antigravity_logo.png
-```
-
----
-
-## 🚀 Quick Start
-
-### 1. Requirements
-- Windows 10 / 11
-- Python 3.10+ installed
-
-### 2. Installation
-Clone the repository:
+### 🚀 Быстрый старт
 ```bash
 git clone https://github.com/storm-dev-arch/antigravity-discord-rpc.git
 cd antigravity-discord-rpc
 pip install -r requirements.txt
 ```
 
-### 3. Configuration (`config.json`)
-You can tweak your Discord presence settings in `config.json`:
+#### Настройка (`config.json`)
 ```json
 {
     "client_id": "1558383244892700683",
@@ -89,21 +63,37 @@ You can tweak your Discord presence settings in `config.json`:
 }
 ```
 
-### 4. Running
-- To run silently in the background: double-click `run_silent.vbs` or `start.bat`.
-- To stop the service: run `stop.bat`.
+#### Запуск
+- Для бесшумного запуска в фоне: запусти `run_silent.vbs` или `start.bat`.
+- Для остановки: запусти `stop.bat`.
 
 ---
 
-## 📦 Windows Autorun Setup
+<a name="english"></a>
+## 🇬🇧 English Documentation
 
-To have the service automatically start with Windows, add a registry string to:
-`HKCU\Software\Microsoft\Windows\CurrentVersion\Run`
-- **Name**: `AntigravityDiscordRPC`
-- **Value**: `wscript.exe "<FULL_PATH_TO>\run_silent.vbs"`
+### ✨ Features
+- **🎮 Dynamic Discord Rich Presence**:
+  - Automatically hooks into Discord IPC via `pypresence`.
+  - Dynamically reads active task titles from Antigravity's internal SQLite DB (`conversation_summaries.db`).
+  - Displays session elapsed timer with custom Google Antigravity brand logo.
+- **🔔 Sleek Glassmorphism Toast Notifications**:
+  - Built with **PyQt6** (`WA_TranslucentBackground`, `FramelessWindowHint`).
+  - Smooth 320ms cubic slide-in & fade animation with custom audio chime.
+  - Triggers instantly on turn completion (`RUNNING -> IDLE`).
+- **⚡ Stealth & Background Autorun**:
+  - Zero terminal windows (launches silently via `pythonw.exe` & VBS wrapper).
+  - Built-in single-instance lock to prevent duplicate instances.
+
+### 🚀 Quick Start
+```bash
+git clone https://github.com/storm-dev-arch/antigravity-discord-rpc.git
+cd antigravity-discord-rpc
+pip install -r requirements.txt
+start.bat
+```
 
 ---
 
 ## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for details.
